@@ -1,1 +1,41 @@
-<p>lister-praticien works!</p>
+<div class="container">
+  <h1>Recherche d'un praticien</h1>
+  <div class="main">
+    <div class="form-group">
+      <label for="nom">Filtrer par nom : </label>
+      <input type="text" name="nom" id="nom" [(ngModel)]="nomPraticien" (keyup)="chargerPraticienNom()" value=""/>
+    </div>
+    <label for="type">Filtrer par Type : </label>
+    <select name="type" id="type" [(ngModel)]="typeChoisi" (ngModelChange)="chargerPraticienNomType()">
+      <option value="" selected>---</option>
+      <option *ngFor="let unType of lesTypes" value="{{unType.id_type_praticien}}">{{unType.lib_type_praticien}}</option>
+    </select>
+  </div>
+  <div class="main">
+    <div id="chargement" *ngIf="chargement">
+      <b>Chargement en cours...</b>
+    </div>
+    <table class="table table-hover table-responsive-lg">
+      <thead class="thead-1">
+      <th scope="col">Id</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Adresse</th>
+      <th scope="col">Ville</th>
+      <th scope="col">Coef Notoriete</th>
+      <th scope="col"></th>
+      </thead>
+      <tbody id="contenu">
+      <tr class="tr-1" *ngFor="let unPraticien of lesPraticien">
+        <td>{{unPraticien.id_praticien}}</td>
+        <td>{{unPraticien.nom_praticien}}</td>
+        <td>{{unPraticien.prenom_praticien}}</td>
+        <td>{{unPraticien.adresse_praticien}}</td>
+        <td>{{unPraticien.ville_praticien}}</td>
+        <td>{{unPraticien.coef_notoriete}}</td>
+        <td><button type="button" class="btn-2">Modifier les activites complementaires</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

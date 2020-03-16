@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../service/auth.service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  authStatus: boolean;
   constructor() { }
 
   ngOnInit(): void {
+    this.authStatus = localStorage.getItem('connected') === 'true';
+  }
+
+  onSignIn() {
+    localStorage.setItem('connected', 'true');
+    this.authStatus = localStorage.getItem('connected') === 'true';
+  }
+
+  onSignOut() {
+    localStorage.setItem('connected', 'false');
+    this.authStatus = localStorage.getItem('connected') === 'true';
   }
 
 }
