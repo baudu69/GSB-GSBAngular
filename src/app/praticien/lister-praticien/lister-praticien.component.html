@@ -33,7 +33,10 @@
         <td>{{unPraticien.adresse_praticien}}</td>
         <td>{{unPraticien.ville_praticien}}</td>
         <td>{{unPraticien.coef_notoriete}}</td>
-        <td><button type="button" class="btn-2">Modifier les activites complementaires</button></td>
+        <td><a routerLink="../listerActivite/{{unPraticien.id_praticien}}"><button type="button" class="btn-2">Modifier les activites complementaires</button></a></td>
+      </tr>
+      <tr *ngIf="lesPraticien.length == 0">
+        <td colspan="7" style="text-align: center">Il n'y a pas de medecins avec ce nom/activite</td>
       </tr>
       </tbody>
     </table>

@@ -9,4 +9,6 @@ export class Activites {
   public theme_activite: string;
   // tslint:disable-next-line:variable-name
   public motif_activite: string;
+  // tslint:disable-next-line:variable-name
+  public specialite_activite: string;
 }

@@ -27,8 +27,9 @@ export class ConnexionComponent implements OnInit {
   onSignIn(): void {
     this.authService.signIn(this.login, this.pwd).subscribe(
       data => {
-        if (data === 'ok') {
+        if (data.message === 'ok') {
           localStorage.setItem('connected', 'true');
+          localStorage.setItem('token', data.token);
           window.location.reload();
         } else {
           this.message = data;

@@ -3,6 +3,7 @@ import {PraticienService} from '../../service/praticien.service';
 import {Praticien} from '../../metier/Praticien';
 import {Activites} from '../../metier/Activites';
 import {TypePraticien} from '../../metier/TypePraticien';
+import {Router, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-lister-praticien',
@@ -16,27 +17,42 @@ export class ListerPraticienComponent implements OnInit {
   lesPraticien: Array<Praticien>;
   lesTypes: Array<TypePraticien>;
   typeChoisi: string;
-  constructor(private praticienService: PraticienService) { }
+  constructor(private praticienService: PraticienService, private routeur: Router) { }
 
   ngOnInit(): void {
     this.nomPraticien = '';
     this.chargement = true;
     this.praticienService.listerType().subscribe(
       (data) => {
-        this.lesTypes = data;
+        if (data.token !== 'Invalide') {
+          this.lesTypes = data.lesTypes;
+          localStorage.setItem('token', data.token);
+          this.praticienService.listerPraticien().subscribe(
+            (data2) => {
+              if (data2.token !== 'Invalide') {
+                this.lesPraticien = data2.lesPraticiens;
+                localStorage.setItem('token', data2.token);
+              } else {
+                this.routeur.navigate(['/signIn']);
+              }
+              this.chargement = false;
+            }
+          );
+        } else {
+          this.routeur.navigate(['/signIn']);
+        }
       });
-    this.praticienService.listerPraticien().subscribe(
-      (data) => {
-        this.lesPraticien = data;
-        this.chargement = false;
-      }
-    );
   }
   chargerPraticienNom(): void {
     this.chargement = true;
     this.praticienService.listerPraticienNom(this.nomPraticien).subscribe(
       (data) => {
-        this.lesPraticien = data;
+        if (data.token !== 'Invalide') {
+          this.lesPraticien = data.lesPraticiens;
+          localStorage.setItem('token', data.token);
+        } else {
+          this.routeur.navigate(['/signIn']);
+        }
         this.chargement = false;
       }
     );
@@ -45,7 +61,12 @@ export class ListerPraticienComponent implements OnInit {
     this.chargement = true;
     this.praticienService.listerPraticienNomType(this.nomPraticien, this.typeChoisi).subscribe(
       (data) => {
-        this.lesPraticien = data;
+        if (data.token !== 'Invalide') {
+          this.lesPraticien = data.lesPraticiens;
+          localStorage.setItem('token', data.token);
+        } else {
+          this.routeur.navigate(['/signIn']);
+        }
         this.chargement = false;
       }
     );

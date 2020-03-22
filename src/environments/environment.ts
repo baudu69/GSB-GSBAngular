@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiURL: 'http://localhost/GSB/public/api/json/',
+  apiURL: 'http://localhost/api/json/',
 };
 
 /*

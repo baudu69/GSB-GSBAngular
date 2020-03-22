@@ -9,6 +9,9 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { ListerPraticienComponent } from './praticien/lister-praticien/lister-praticien.component';
+import { ListerActiviteComponent } from './praticien/lister-activite/lister-activite.component';
+import { ListerToutesActivitesComponent } from './activite/lister-toutes-activites/lister-toutes-activites.component';
+import { AjoutActiviteComponent } from './activite/ajout-activite/ajout-activite.component';
 
 const appRoutes: Routes = [
   { path: 'navbar', component: NavbarComponent },
@@ -19,7 +22,10 @@ const appRoutes: Routes = [
     AppComponent,
     NavbarComponent,
     ConnexionComponent,
-    ListerPraticienComponent
+    ListerPraticienComponent,
+    ListerActiviteComponent,
+    ListerToutesActivitesComponent,
+    AjoutActiviteComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,41 @@
+<div class="container">
+  <h1>Liste des activites</h1>
+  <div class="main">
+    <div class="form-group">
+      <label for="activite">Ajouter une activite existante : </label>
+      <select name="activite" id="activite" [(ngModel)]="idActiviteChoisi">
+        <option value="" selected>---</option>
+        <option *ngFor="let uneActivite of lesAutresActivites" value="{{uneActivite.id_activite_compl}}">{{uneActivite.theme_activite}}</option>
+      </select>
+      <button type="button" (click)="ajouterActivite()">Valider</button>
+    </div>
+    <div id="chargement" *ngIf="chargement">
+      <b>Chargement en cours...</b>
+    </div>
+    <table class="table table-hover table-responsive-lg">
+      <thead class="thead-1">
+      <th scope="col">Id</th>
+      <th scope="col">Date</th>
+      <th scope="col">Lieu</th>
+      <th scope="col">Theme</th>
+      <th scope="col">Motif</th>
+      <th scope="col">Specialite</th>
+      <th scope="col"></th>
+      </thead>
+      <tbody id="contenu">
+      <tr class="tr-1" *ngFor="let uneActivite of lesActivites">
+        <td>{{uneActivite.id_activite_compl}}</td>
+        <td>{{uneActivite.date_activite}}</td>
+        <td>{{uneActivite.lieu_activite}}</td>
+        <td>{{uneActivite.theme_activite}}</td>
+        <td>{{uneActivite.motif_activite}}</td>
+        <td>{{uneActivite.specialite_activite}}</td>
+        <td><button type="button" class="btn-3" (click)="supprimerActivite(uneActivite.id_activite_compl)">Supprimer cette activite</button></td>
+      </tr>
+      <tr *ngIf="lesActivites.length == 0">
+        <td colspan="7" style="text-align: center">Ce praticien n'a pas d'activites complementaires</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

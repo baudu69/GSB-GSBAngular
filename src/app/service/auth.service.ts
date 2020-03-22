@@ -17,6 +17,6 @@ export class AuthService {
   signIn(login: string, pwd: string): Observable<any> {
     this.visiteur.id = login;
     this.visiteur.mdp = pwd;
-    return this.httpClient.post<any>(environment.apiURL + 'SignIn', JSON.stringify(this.visiteur));
+    return this.httpClient.post<any>(environment.apiURL + 'signIn', JSON.stringify(this.visiteur));
   }
 }
