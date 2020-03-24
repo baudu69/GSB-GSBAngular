@@ -31,6 +31,8 @@ export class ConnexionComponent implements OnInit {
           localStorage.setItem('token', data.token);
           localStorage.setItem('actualise', 'true');
           this.router.navigate(['accueil']);
+        } else {
+          this.message = data.message;
         }
       },
       Error => {
