@@ -14,6 +14,9 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) { }
 
+  /**
+   * Requete d'authentification
+   */
   signIn(login: string, pwd: string): Observable<any> {
     this.visiteur.id = login;
     this.visiteur.mdp = pwd;

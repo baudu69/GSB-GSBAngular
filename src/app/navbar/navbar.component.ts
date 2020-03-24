@@ -11,16 +11,16 @@ export class NavbarComponent implements OnInit {
 
   authStatus: boolean;
   constructor() { }
-
+  /**
+   * Verifie l'etat de l'authentification pour afficher les onglets
+   * connexion et deconnexion
+   */
   ngOnInit(): void {
     this.authStatus = localStorage.getItem('connected') === 'true';
   }
-
-  onSignIn() {
-    localStorage.setItem('connected', 'true');
-    this.authStatus = localStorage.getItem('connected') === 'true';
-  }
-
+  /**
+   * Deconnexion
+   */
   onSignOut() {
     localStorage.setItem('connected', 'false');
     this.authStatus = localStorage.getItem('connected') === 'true';

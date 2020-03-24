@@ -42,7 +42,12 @@ export class PraticienService {
     return this.httpClient.delete(url).pipe();
   }
   public ajouterActivitePraticien(idPraticien: string, idActivite: number): Observable<any> {
-    const url = environment.apiURL + 'praticien/ajouterActivitePraticien?idPraticien=' + idPraticien + '&idActivite=' + idActivite + '&token=' + localStorage.getItem('token');
+    const url = environment.apiURL + 'praticien/ajouterActivitePraticien?idPraticien=' + idPraticien + '&idActivite='
+      + idActivite + '&token=' + localStorage.getItem('token');
     return this.httpClient.get(url).pipe();
+  }
+  public specialiser(idActivite1: number, idPraticien1: string, faire1: string): Observable<any> {
+    const url = environment.apiURL + 'praticien/specialiser'
+    return this.httpClient.post(url, {idActivite: idActivite1, idPraticien: idPraticien1, faire: faire1, token: localStorage.getItem('token')}).pipe();
   }
 }

@@ -18,7 +18,9 @@ export class ListerPraticienComponent implements OnInit {
   lesTypes: Array<TypePraticien>;
   typeChoisi: string;
   constructor(private praticienService: PraticienService, private routeur: Router) { }
-
+  /**
+   * Charge la liste des types et des praticiens
+   */
   ngOnInit(): void {
     this.nomPraticien = '';
     this.chargement = true;
@@ -43,6 +45,9 @@ export class ListerPraticienComponent implements OnInit {
         }
       });
   }
+  /**
+   * Charger la liste des praticiens triee par nom
+   */
   chargerPraticienNom(): void {
     this.chargement = true;
     this.praticienService.listerPraticienNom(this.nomPraticien).subscribe(
@@ -57,6 +62,9 @@ export class ListerPraticienComponent implements OnInit {
       }
     );
   }
+  /**
+   * Charge la liste des praticiens triee par nom et par type
+   */
   chargerPraticienNomType(): void {
     this.chargement = true;
     this.praticienService.listerPraticienNomType(this.nomPraticien, this.typeChoisi).subscribe(

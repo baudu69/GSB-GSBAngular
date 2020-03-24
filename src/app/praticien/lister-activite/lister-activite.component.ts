@@ -17,7 +17,10 @@ export class ListerActiviteComponent implements OnInit {
   chargement = false;
 
   constructor(private route: ActivatedRoute, private servicePraticien: PraticienService, private routeur: Router) { }
-
+  /**
+   * Charge la liste des activites a ajouter
+   * Charge la liste des activites du praticien
+   */
   ngOnInit(): void {
     this.chargement = true;
     this.idPraticien = this.route.snapshot.params.idPraticien;
@@ -44,6 +47,10 @@ export class ListerActiviteComponent implements OnInit {
       }
     );
   }
+  /**
+   * Supprime une invitation, recharge la liste des activites, des activites a ajouter
+   * et des invitations
+   */
   supprimerActivite(idActivite: number): void {
     this.servicePraticien.supprimerActivite(this.idPraticien, idActivite).subscribe(
       (data) => {
@@ -78,6 +85,10 @@ export class ListerActiviteComponent implements OnInit {
       }
     );
   }
+  /**
+   * Ajoute une invitation, recharge la liste des activites, des activites a ajouter
+   * et des invitations
+   */
   ajouterActivite(): void {
     this.servicePraticien.ajouterActivitePraticien(this.idPraticien, this.idActiviteChoisi).subscribe(
       (data) => {
@@ -102,5 +113,28 @@ export class ListerActiviteComponent implements OnInit {
       }
     );
   }
-
+  /**
+   * Specialise (ou pas) une invitation
+   */
+  Specialiser(faire: boolean, idActivite: number): void {
+    let faire1: string;
+    if (faire) {
+      faire1 = '1';
+    } else {
+      faire1 = '0';
+    }
+    this.servicePraticien.specialiser(idActivite, this.idPraticien, faire1).subscribe(
+        (data) => {
+          if (data.token !== 'Invalide') {
+            if (data.Message === 'OK') {
+              this.lesActivites = data.lesActivites;
+              localStorage.setItem('token', data.token);
+            }
+          } else {
+            this.routeur.navigate(['/signIn']);
+          }
+          this.chargement = false;
+        }
+      );
+    }
 }

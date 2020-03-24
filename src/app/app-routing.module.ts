@@ -6,8 +6,10 @@ import {ListerPraticienComponent} from './praticien/lister-praticien/lister-prat
 import {ListerActiviteComponent} from './praticien/lister-activite/lister-activite.component';
 import {ListerToutesActivitesComponent} from './activite/lister-toutes-activites/lister-toutes-activites.component';
 import {AjoutActiviteComponent} from './activite/ajout-activite/ajout-activite.component';
+import {AccueilComponent} from './accueil/accueil.component';
 
 const routes: Routes = [
+  { path: 'accueil', component:  AccueilComponent},
   { path: 'navbar', component: NavbarComponent },
   { path: 'signIn', component: ConnexionComponent},
   { path: 'listerPraticien', component: ListerPraticienComponent},

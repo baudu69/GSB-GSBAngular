@@ -19,7 +19,7 @@
       <th scope="col">Lieu</th>
       <th scope="col">Theme</th>
       <th scope="col">Motif</th>
-      <th scope="col">Specialite</th>
+      <th scope="col">Specialiste</th>
       <th scope="col"></th>
       </thead>
       <tbody id="contenu">
@@ -29,7 +29,8 @@
         <td>{{uneActivite.lieu_activite}}</td>
         <td>{{uneActivite.theme_activite}}</td>
         <td>{{uneActivite.motif_activite}}</td>
-        <td>{{uneActivite.specialite_activite}}</td>
+        <td *ngIf="uneActivite.specialiste === 'O'"><button type="button" (click)="Specialiser(true, uneActivite.id_activite_compl)">Oui</button> </td>
+        <td *ngIf="uneActivite.specialiste !== 'O'"><button type="button" (click)="Specialiser(false, uneActivite.id_activite_compl)">Non</button></td>
         <td><button type="button" class="btn-3" (click)="supprimerActivite(uneActivite.id_activite_compl)">Supprimer cette activite</button></td>
       </tr>
       <tr *ngIf="lesActivites.length == 0">

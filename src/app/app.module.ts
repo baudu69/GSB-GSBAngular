@@ -12,6 +12,7 @@ import { ListerPraticienComponent } from './praticien/lister-praticien/lister-pr
 import { ListerActiviteComponent } from './praticien/lister-activite/lister-activite.component';
 import { ListerToutesActivitesComponent } from './activite/lister-toutes-activites/lister-toutes-activites.component';
 import { AjoutActiviteComponent } from './activite/ajout-activite/ajout-activite.component';
+import { AccueilComponent } from './accueil/accueil.component';
 
 const appRoutes: Routes = [
   { path: 'navbar', component: NavbarComponent },
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
     ListerPraticienComponent,
     ListerActiviteComponent,
     ListerToutesActivitesComponent,
-    AjoutActiviteComponent
+    AjoutActiviteComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,

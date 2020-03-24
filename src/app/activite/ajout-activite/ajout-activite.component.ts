@@ -9,14 +9,17 @@ import {Router} from '@angular/router';
 })
 export class AjoutActiviteComponent implements OnInit {
 
-  private dateActivite: string;
-  private lieuActivite: string;
-  private themeActivite: string;
-  private motifActivite: string;
+  dateActivite: string;
+  lieuActivite: string;
+  themeActivite: string;
+  motifActivite: string;
   constructor(private serviceActivite: ActiviteService, private routeur: Router) { }
 
   ngOnInit(): void {
   }
+  /**
+   * Valide l'ajout d'une activite
+   */
   public valider(): void {
     if ((this.dateActivite !== undefined) && (this.lieuActivite !== undefined) && (this.themeActivite !== undefined) && (this.motifActivite !== undefined)) {
       this.serviceActivite.ajoutActivite(this.dateActivite, this.lieuActivite, this.themeActivite, this.motifActivite).subscribe(

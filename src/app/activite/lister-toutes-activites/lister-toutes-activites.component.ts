@@ -14,6 +14,9 @@ export class ListerToutesActivitesComponent implements OnInit {
   chargement = false;
   constructor(private serviceActivite: ActiviteService, private routeur: Router) { }
 
+  /**
+   * Charge la liste des activites
+   */
   ngOnInit(): void {
     this.serviceActivite.listerActivites().subscribe(
       (data) => {
