@@ -23,6 +23,7 @@ export class NavbarComponent implements OnInit {
    */
   onSignOut() {
     localStorage.setItem('connected', 'false');
+    localStorage.clear();
     this.authStatus = localStorage.getItem('connected') === 'true';
   }
 

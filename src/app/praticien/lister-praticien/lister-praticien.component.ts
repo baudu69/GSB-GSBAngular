@@ -49,18 +49,22 @@ export class ListerPraticienComponent implements OnInit {
    * Charger la liste des praticiens triee par nom
    */
   chargerPraticienNom(): void {
-    this.chargement = true;
-    this.praticienService.listerPraticienNom(this.nomPraticien).subscribe(
-      (data) => {
-        if (data.token !== 'Invalide') {
-          this.lesPraticien = data.lesPraticiens;
-          localStorage.setItem('token', data.token);
-        } else {
-          this.routeur.navigate(['/signIn']);
+    if (this.typeChoisi === undefined) {
+      this.chargement = true;
+      this.praticienService.listerPraticienNom(this.nomPraticien).subscribe(
+        (data) => {
+          if (data.token !== 'Invalide') {
+            this.lesPraticien = data.lesPraticiens;
+            localStorage.setItem('token', data.token);
+          } else {
+            this.routeur.navigate(['/signIn']);
+          }
+          this.chargement = false;
         }
-        this.chargement = false;
-      }
-    );
+      );
+    } else {
+      this.chargerPraticienNomType();
+    }
   }
   /**
    * Charge la liste des praticiens triee par nom et par type

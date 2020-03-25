@@ -1,8 +1,8 @@
 <div class="container">
-  <h1>Liste des activites</h1>
+  <h1>Liste des activitées</h1>
   <div class="main">
     <div class="form-group">
-      <label for="activite">Ajouter une activité existante : </label>
+      <label for="activite">Ajouter une activitée existante : </label>
       <select name="activite" id="activite" [(ngModel)]="idActiviteChoisi">
         <option value="" selected>---</option>
         <option *ngFor="let uneActivite of lesAutresActivites" value="{{uneActivite.id_activite_compl}}">{{uneActivite.theme_activite}}</option>

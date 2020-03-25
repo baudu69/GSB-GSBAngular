@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {types} from 'util';
 
 @Component({
   selector: 'app-accueil',
