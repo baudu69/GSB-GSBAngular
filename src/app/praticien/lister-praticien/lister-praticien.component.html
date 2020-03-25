@@ -22,7 +22,7 @@
       <th scope="col">Prenom</th>
       <th scope="col">Adresse</th>
       <th scope="col">Ville</th>
-      <th scope="col">Coef Notoriete</th>
+      <th scope="col">Coef Notoriété</th>
       <th scope="col"></th>
       </thead>
       <tbody id="contenu">
@@ -33,10 +33,10 @@
         <td>{{unPraticien.adresse_praticien}}</td>
         <td>{{unPraticien.ville_praticien}}</td>
         <td>{{unPraticien.coef_notoriete}}</td>
-        <td><a routerLink="../listerActivite/{{unPraticien.id_praticien}}"><button type="button" class="btn-2">Modifier les activites complementaires</button></a></td>
+        <td><a routerLink="../listerActivite/{{unPraticien.id_praticien}}"><button type="button" class="btn-2">Modifier les activités complémentaires</button></a></td>
       </tr>
       <tr *ngIf="lesPraticien.length == 0">
-        <td colspan="7" style="text-align: center">Il n'y a pas de medecins avec ce nom/activite</td>
+        <td colspan="7" style="text-align: center">Il n'y a pas de medecins avec ce nom/activité</td>
       </tr>
       </tbody>
     </table>

@@ -1,7 +1,7 @@
 <div class="container">
-  <h1>Liste des activites</h1>
+  <h1>Liste des activités</h1>
   <div class="main">
-    <a routerLink="../ajoutActivite"><button type="button" class="btn-1">Ajouter une activite</button></a>
+    <a routerLink="../ajoutActivite"><button type="button" class="btn-1">Ajouter une activité</button></a>
     <div id="chargement" *ngIf="chargement">
       <b>Chargement en cours...</b>
     </div>
@@ -10,7 +10,7 @@
       <th scope="col">Id</th>
       <th scope="col">Date</th>
       <th scope="col">Lieu</th>
-      <th scope="col">Theme</th>
+      <th scope="col">Thème</th>
       <th scope="col">Motif</th>
       </thead>
       <tbody id="contenu">
@@ -22,7 +22,7 @@
         <td>{{uneActivite.motif_activite}}</td>
       </tr>
       <tr *ngIf="lesActivites.length == 0">
-        <td colspan="7" style="text-align: center">Ce n'y a pas d'activites complementaires</td>
+        <td colspan="7" style="text-align: center">Il n'y a pas d'activités complémentaires</td>
       </tr>
       </tbody>
     </table>
